@@ -13,7 +13,7 @@ const routes = [
     {
         path: '/shouYeIndex',
         name: 'shouYeIndex',
-        component: () => import('../views/shouye/shouye.vue'),
+        component: () => import('../views/admin/shouye.vue'),
         children:[
             {
                 /*通讯录首页*/
