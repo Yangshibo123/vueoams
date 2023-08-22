@@ -7,7 +7,7 @@
 export default {
   name: 'App',
   mounted() {
-    this.$router.push("shouYeIndex")
+    this.$router.push("loginIndex")
   }
 
 }

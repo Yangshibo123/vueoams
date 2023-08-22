@@ -2,11 +2,18 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
+    /*登录页*/
+    {
+        path: '/loginIndex',
+        name: 'loginIndex',
+        component: () => import('../views/admin/login.vue'),
+
+    },
     /*主页*/
     {
         path: '/shouYeIndex',
         name: 'shouYeIndex',
-        component: () => import('../views/shouye/shouye.vue'),
+        component: () => import('../views/admin/shouye.vue'),
 
     },
 ]
