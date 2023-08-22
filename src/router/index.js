@@ -7,7 +7,14 @@ const routes = [
         path: '/shouYeIndex',
         name: 'shouYeIndex',
         component: () => import('../views/shouye/shouye.vue'),
-
+        children:[
+            {
+                /*通讯录首页*/
+                path: '/txl_list',
+                name: 'txl_list',
+                component: () => import('../views/txl/list.vue')
+            }
+        ]
     },
 ]
 const router = createRouter({
