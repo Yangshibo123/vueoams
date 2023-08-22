@@ -95,7 +95,7 @@
             <template #title>
               <el-icon><setting /></el-icon>通讯录
             </template>
-            <el-menu-item index="13-1">通讯录</el-menu-item>
+            <el-menu-item index="13-1" @click="this.$router.push('txl_list')">通讯录</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="14">
             <template #title>
