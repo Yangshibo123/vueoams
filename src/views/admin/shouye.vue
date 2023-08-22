@@ -1,5 +1,5 @@
 <template>
-  <el-container class="layout-container-demo" style="height: 900px">
+  <el-container class="layout-container-demo" style="">
     <el-aside width="200px">
       <el-image src="../../assets/touxiang.png"></el-image>
       <el-scrollbar>
@@ -111,8 +111,7 @@
       <el-header style="text-align: right; font-size: 12px">
           <span>Tom</span>
       </el-header>
-
-      <el-main>
+      <el-main style="margin-top: -70px;height: 900px" >
       <router-view></router-view>
       </el-main>
     </el-container>
