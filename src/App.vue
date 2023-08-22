@@ -7,7 +7,7 @@
 export default {
   name: 'App',
   mounted() {
-    this.$router.push("txl_list")
+    this.$router.push("loginIndex")
   }
 
 }
