@@ -20,11 +20,13 @@ const routes = [
                 path: '/addrmanage',
                 name: 'addrmanage',
                 component: () => import('../views/txl/list.vue'),
-                children:[{
-                    path:'/nbList',
-                    name:'nbList',
-                    component: () => import('../views/txl/txlChildren/nbList.vue')
-                }]
+                children:[
+                    {
+                        path:'/nbList',
+                        name:'nbList',
+                        component: () => import('../views/txl/txlChildren/nbList.vue')
+                    }
+                ]
             }
         ]
     },
