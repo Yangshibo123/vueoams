@@ -25,16 +25,17 @@ const routes = [
                     name:'nbList',
                     component: () => import('../views/txl/txlChildren/nbList.vue')
                 }]
-            }
+            },
+            //考勤管理
+            {
+                path: '/attendceatt',
+                name: 'attendceatt',
+                component: () => import('../views/kqgl/kq_list.vue'),
+
+            },
         ]
     },
-//考勤管理
-    {
-        path: '/attendceatt',
-        name: 'attendceatt',
-        component: () => import('../views/kqgl/kq_list.vue'),
 
-    },
 ]
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
