@@ -111,7 +111,7 @@
       <el-header style="text-align: right; font-size: 12px">
           <span>Tom</span>
       </el-header>
-      <el-main style="margin-top: -70px;height: 900px" >
+      <el-main style="margin-top: -70px;height: 900px">
       <router-view></router-view>
       </el-main>
     </el-container>

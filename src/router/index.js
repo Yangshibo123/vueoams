@@ -17,9 +17,14 @@ const routes = [
         children:[
             {
                 /*通讯录首页*/
-                path: '/txl_list',
-                name: 'txl_list',
-                component: () => import('../views/txl/list.vue')
+                path: '/addrmanage',
+                name: 'addrmanage',
+                component: () => import('../views/txl/list.vue'),
+                children:[{
+                    path:'/nbList',
+                    name:'nbList',
+                    component: () => import('../views/txl/txlChildren/nbList.vue')
+                }]
             }
         ]
     },
