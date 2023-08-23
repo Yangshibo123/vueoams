@@ -52,6 +52,8 @@ export default {
 </script>
 <style  scoped>
 #login {
+  margin-top: -60px;
+  margin-left: -8px;
   font-family: "Montserrat", sans-serif;
   background: #f6f5f7;
   display: flex;
@@ -283,4 +285,5 @@ input[type="email"] {
   right: 0;
   transform: translateX(0);
 }
+
 </style>

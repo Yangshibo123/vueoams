@@ -5,6 +5,7 @@
     font-size: 20px;
     background-color: #2c3e50;
     margin-top: -60px;
+    margin-left: -8px;
     padding-top: 15px;
     width: 100%">
       <span style="color: white">{{ user.userName }}</span>

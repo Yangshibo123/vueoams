@@ -35,6 +35,24 @@ const routes = [
                 component: () => import('../views/kqgl/kq_list.vue'),
 
             },
+            {
+                path: '/newLiuCheng',
+                name: 'newLiuCheng',
+                component: () => import('../views/liuchengguanli/xinjianliucheng/newLiuCheng.vue'),
+
+            },
+            {
+                path: '/feiYong',
+                name: 'feiYong',
+                component: () => import('../views/liuchengguanli/xinjianliucheng/feiYong.vue'),
+
+            },
+            {
+                path: '/chuChai',
+                name: 'chuChai',
+                component: () => import('../views/liuchengguanli/xinjianliucheng/chuChai.vue'),
+
+            },
         ]
     },
 
