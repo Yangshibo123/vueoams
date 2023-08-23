@@ -5,7 +5,6 @@
         <div class="form-container sign-in-container">
           <form action="#">
             <h1>协同办公系统</h1>
-
             <span>Version 1.0.0</span>
             <input type="text" placeholder="账号" v-model="username" />
             <input type="password" placeholder="密码" v-model="password" />
@@ -41,7 +40,8 @@ export default {
     loginBtn(){
       login(this.username,this.password).then((res)=>{
         if (res.code==0){
-          localStorage.setItem("user",res.data.user);
+          localStorage.setItem("user",JSON.stringify(res.data.user));
+          console.log(JSON.stringify(res.data.user))
           localStorage.setItem("menus", JSON.stringify(res.data.menus));
           this.$router.push({name:'shouYeIndex'})
         }
