@@ -1,213 +1,286 @@
 <template>
-  <div>
-    <div class="login-box">
-      <h2>登录系统</h2>
-      <form>
-        <div class="user-box">
-          <input type="text" name="" required="" v-model="username">
-          <label>用户名</label>
+  <div id="login">
+    <transition appear name="opacitytrans">
+      <div class="container" id="container">
+        <div class="form-container sign-in-container">
+          <form action="#">
+            <h1>协同办公系统</h1>
+
+            <span>Version 1.0.0</span>
+            <input type="text" placeholder="账号" v-model="username" />
+            <input type="password" placeholder="密码" v-model="password" />
+            <div class="button" @click="loginBtn" >登录</div>
+          </form>
         </div>
-        <div class="user-box">
-          <input type="password" name="" required="" v-model="password">
-          <label>密码</label>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-right">
+              <img class="logo" src="../../assets/img_1.png"  alt="图片加载失败" />
+              <p>
+                「 Business Direction is everything 」
+              </p>
+            </div>
+          </div>
         </div>
-        &nbsp;&nbsp;
-        <a @click="loginBtn">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          登录
-        </a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </form>
-    </div>
+      </div>
+    </transition>
   </div>
 </template>
-
 <script>
+import {login} from "@/http/api";
+
 export default {
-  name: "App",
+  name: "loGin",
   data() {
     return {
-      username: '',
-      password: '',
-      msg: ''
-    }
+      username: "罗密欧",
+      password: "123456",
+    };
   },
-  methods: {
+  methods:{
     loginBtn(){
-      this.$router.push("shouYeIndex")
-    },
-  },
-}
-;
+      login(this.username,this.password).then((res)=>{
+        if (res.code==0){
+          localStorage.setItem("user",res.data.user);
+          localStorage.setItem("menus", JSON.stringify(res.data.menus));
+          this.$router.push({name:'shouYeIndex'})
+        }
+      })
+    }
+  }
+};
 </script>
-
-<style>
-body {
-  background-image: url(@/assets/touxiang.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: 0px -50px;
+<style  scoped>
+#login {
+  font-family: "Montserrat", sans-serif;
+  background: #f6f5f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* margin: -20px 0 50px; */
+  /* background-image: url("https://www.17sucai.com/preview/1749733/2019-06-22/%E7%99%BB%E5%BD%95/img/img1.png"); */
+  background-image: url('@/assets/img.png');
+  background-size: cover;
+}
+.logo {
+  width: 160px;
+  height: auto;
+}
+h1 {
+  font-weight: bold;
+  margin: 0;
+  color: beige;
 }
 
-.login-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, .5);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
-  border-radius: 10px;
+p {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
 }
 
-.login-box h2 {
-  margin: 0 0 30px;
-  padding: 0;
+span {
+  font-size: 12px;
+  color: beige;
+}
+
+a {
   color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.container {
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: absolute;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+  opacity: 0.8;
+}
+
+.form-container form {
+  background: rgba(45, 52, 54, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.login-box .user-box {
-  position: relative;
+.social-container {
+  margin: 20px 0;
 }
 
-.login-box .user-box input {
+.social-container a {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  height: 40px;
+  width: 40px;
+}
+
+.form-container input {
+  background: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
   width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 20px;
+  /* border: 1px solid #ff4b2b;
+  background: #ff4b2b; */
+  /* border: 1px solid #fa8817;
+  background: #fa8817; */
+  border: 1px solid #1BBFB4;
+  background: #1BBFB4;
   color: #fff;
-  margin-bottom: 30px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  margin-top: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
+input[type="text"] {
+  width: 240px;
+  text-align: center;
+  background: transparent;
   border: none;
   border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
-}
-
-.login-box .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
+  font-family: "PLay", sans-serif;
+  font-size: 16px;
   padding: 10px 0;
-  font-size: 16px;
+  transition: border 0.5s;
+  outline: none;
   color: #fff;
-  pointer-events: none;
-  transition: .5s;
+  font-weight: bold;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #03e9f4;
-  font-size: 12px;
-}
-
-.login-box form a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: #03e9f4;
+input[type="password"] {
+  width: 240px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  font-family: "PLay", sans-serif;
   font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 4px
-}
-
-.login-box a:hover {
-  background: #03e9f4;
+  font-weight: bold;
+  padding: 10px 0;
+  transition: border 0.5s;
+  outline: none;
   color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4,
-  0 0 25px #03e9f4,
-  0 0 50px #03e9f4,
-  0 0 100px #03e9f4;
 }
 
-.login-box a span {
+input[type="email"] {
+  width: 240px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  font-family: "PLay", sans-serif;
+  font-size: 16px;
+  padding: 10px 0;
+  transition: border 0.5s;
+  outline: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button.ghost {
+  background: transparent;
+
+  /* border-color: #fa8817;
+  background-color: #fa8817; */
+  border-color: #1BBFB4;
+  background-color: #1BBFB4;
+  margin: 0;
+}
+
+.form-container {
   position: absolute;
-  display: block;
-}
-
-.login-box a span:nth-child(1) {
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
-}
-
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
-  50%, 100% {
-    left: 100%;
-  }
-}
-
-.login-box a span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
+  transition: all 0.6s ease-in-out;
 }
 
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-  50%, 100% {
-    top: 100%;
-  }
-}
-
-.login-box a span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-  50%, 100% {
-    right: 100%;
-  }
-}
-
-.login-box a span:nth-child(4) {
-  bottom: -100%;
+.sign-in-container {
   left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
+  width: 50%;
+  z-index: 2;
 }
 
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-  50%, 100% {
-    bottom: 100%;
-  }
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  z-index: 1;
+  opacity: 0;
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.overlay {
+  background: transparent;
+/*  background: linear-gradient(to right, #ff4b2b, #ff416c);*/
+  color: #fff;
+  position: absolute;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
 }
 </style>

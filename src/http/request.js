@@ -2,10 +2,10 @@ import axios from 'axios'
 import {ElMessage} from "element-plus";
 import router from "@/router";
 const instance = axios.create({
-    baseURL: 'http://localhost:8080',//配置项目固定域名
+    baseURL: 'http://localhost:7777',//配置项目固定域名
     timeout: 3000//设置超时时间
 })
-export const domain = "http://localhost:8080/ssmqj7b0/upload/";
+/*export const domain = "http://localhost:8080/ssmqj7b0/upload/";*/
 
 // 请求拦截
 // 所有的网络请求都会走这个方法,可以在请求添加自定义内容
@@ -21,6 +21,7 @@ instance.interceptors.request.use(config => {
 // 此处可以根据服务器返回的状态码做相应的数据
 instance.interceptors.response.use(response => {
     const res = response.data
+    console.log(res)
     if (response.status == 200) {
         if (res.code == 0) {
             if (response.config.method == 'post') {
