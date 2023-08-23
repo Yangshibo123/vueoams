@@ -22,7 +22,7 @@
           </el-row>
         </el-row>
         <el-scrollbar>
-          <el-menu v-for="item in menus" :key="item.menuId" style="background-color:black"><!--循环一级菜单-->
+          <el-menu v-for="item in menus" :key="item.menuId" style="background-color:black" :router="true"><!--循环一级菜单-->
             <el-sub-menu index={{item.menuId}} >
               <template #title>
                 <el-icon>
@@ -33,7 +33,7 @@
               </span>
               </template>
               <template  v-for="grade2Menu in item.grade2Menus" :key="grade2Menu.menuId">
-                <el-menu-item  index={{grade2Menu.menuName}} style="background-color: lightslategrey">
+                <el-menu-item  :index="grade2Menu.menuUrl" style="background-color: lightslategrey">
                   <el-icon >
                   </el-icon>
                   <span style="color:white">
@@ -46,7 +46,7 @@
         </el-scrollbar>
       </el-aside>
 
-      <el-main style="margin-top: -70px;height: 1200px" >
+      <el-main style="height: 1200px" >
       <router-view></router-view>
       </el-main>
     </el-container>

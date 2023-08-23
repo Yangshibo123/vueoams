@@ -36,8 +36,8 @@ const routes = [
 
             },
             {
-                path: '/newLiuCheng',
-                name: 'newLiuCheng',
+                path: '/newaddliucheng',
+                name: 'newaddliucheng',
                 component: () => import('../views/liuchengguanli/xinjianliucheng/newLiuCheng.vue'),
 
             },
