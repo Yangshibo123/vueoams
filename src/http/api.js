@@ -14,5 +14,11 @@ export function queryMenusById(userId){
         url:"/aoaUser/queryMenus?userId="+userId,
         method:"get",
     })
-
+}
+/*通讯录内部查询*/
+export function querytxlNb(){
+    return request({
+        url:"/aoaUser/querytxlNb",
+        method:"get",
+    })
 }

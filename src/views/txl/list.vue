@@ -54,8 +54,9 @@
       </el-menu>
     </el-aside>
 
-    <el-main style="background-color: #E8D3D5;">
+    <el-main style="background-color: #E8D3D5;height: 600px">
       <router-view></router-view>
+
     </el-main>
     </el-container>
   </el-container>
