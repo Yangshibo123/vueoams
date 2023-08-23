@@ -67,10 +67,17 @@
 
 <script>
 import {Refresh, Search} from "@element-plus/icons";
+import {Delete, EditPen} from "@element-plus/icons-vue";
 
 export default {
   name: "kq_list",
   computed: {
+    Delete() {
+      return Delete
+    },
+    EditPen() {
+      return EditPen
+    },
     Search() {
       return Search
     },
