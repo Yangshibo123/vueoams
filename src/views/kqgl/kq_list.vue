@@ -66,8 +66,8 @@
 </template>
 
 <script>
-import {Refresh, Search} from "@element-plus/icons";
-import {Delete, EditPen} from "@element-plus/icons-vue";
+
+import {Delete, EditPen,Refresh, Search} from "@element-plus/icons-vue";
 
 export default {
   name: "kq_list",
