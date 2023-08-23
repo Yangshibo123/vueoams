@@ -12,6 +12,16 @@
       <el-button :icon="Search" style="background:rgba(0,0,0,0);border:rgba(0,0,0,0) ;color: #42b983;font-size: 20px">查看</el-button>
     </el-table-column>
   </el-table>
+
+  <div class="block">
+    <el-pagination
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-size="10"
+        layout="total, prev, pager, next, jumper"
+        :total="pages">
+    </el-pagination>
+  </div>
 </template>
 
 <script>
@@ -30,17 +40,26 @@ export default {
   },
   data(){
     return{
-      items:[]
+      items:[],
+      currentPage:'',
+      pages:''
     }
   },
   methods:{
-
+    handleCurrentChange:function (val){
+      this.currentPage = val
+      this.queryAll()
+    },
+    queryAll(){
+      querytxlNb(this.currentPage).then((res)=>{
+        console.log(res)
+        this.items = res.data;
+        this.pages = res.data.total;
+      })
+    }
   },
   mounted() {
-    querytxlNb().then((res)=>{
-      console.log(res)
-      this.items = res.data;
-    })
+    this.queryAll();
   }
 }
 </script>

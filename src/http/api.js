@@ -16,9 +16,9 @@ export function queryMenusById(userId){
     })
 }
 /*通讯录内部查询*/
-export function querytxlNb(){
+export function querytxlNb(pageNo){
     return request({
-        url:"/aoaUser/querytxlNb",
+        url:"/aoaUser/queryList?pageNo="+pageNo,
         method:"get",
     })
 }
