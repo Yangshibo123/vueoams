@@ -21,6 +21,13 @@
             <div style="color: white;font-size: 12px"><el-icon><Sunny /></el-icon>在线</div>
           </el-row>
         </el-row>
+        <el-row style="background-color: black">
+          <el-input placeholder="查找..." v-model="sel" style="width:310px;margin-left: 10px">
+            <template #append>
+              <el-button color="white" :icon="Search" @click="mH" ></el-button>
+            </template>
+          </el-input>
+        </el-row>
         <el-scrollbar>
           <el-menu v-for="item in menus" :key="item.menuId" style="background-color:black" :router="true"><!--循环一级菜单-->
             <el-sub-menu index={{item.menuId}} >
@@ -55,10 +62,15 @@
 
 <script>
 
-import {ChatDotRound, Male, Sunny} from "@element-plus/icons-vue";
+import {ChatDotRound, Male, Search, Sunny} from "@element-plus/icons-vue";
 
 export default {
   name: "shouYe",
+  computed: {
+    Search() {
+      return Search
+    }
+  },
   components: {Sunny, Male, ChatDotRound},
   data:function (){
     return{
@@ -75,6 +87,7 @@ export default {
 </script>
 
 <style scoped>
+
 #box{
   background-color: black;
 
