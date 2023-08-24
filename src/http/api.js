@@ -15,10 +15,17 @@ export function queryMenusById(userId){
         method:"get",
     })
 }
-/*通讯录内部查询*/
+/*通讯录-内部通讯录查询所有*/
 export function querytxlNb(pageNo){
     return request({
         url:"/aoaUser/queryList?pageNo="+pageNo,
+        method:"get",
+    })
+}
+/*通讯录-外部通讯录查询*/
+export function queryWbtxl(){
+    return request({
+        url:"/aoaDirectorUsers/queryAll",
         method:"get",
     })
 }

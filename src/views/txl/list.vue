@@ -24,8 +24,16 @@
           <template #title>
             <el-icon><setting /></el-icon>通讯录
           </template>
-          <el-menu-item index="1-1" @click="this.$router.push('nbList')">内部通讯录</el-menu-item>
-          <el-menu-item >外部通讯录</el-menu-item>
+          <el-menu-item index="1-1" @click="this.$router.push('nbList')">
+            内部通讯录
+          </el-menu-item>
+          <el-sub-menu index="2-4">
+            <template #title>外部通讯录</template>
+            <template v-for="wb in wbtx" :key="wb.id">
+              <el-menu-item index="2-4-1">{{ wb.catelogName }}</el-menu-item>
+            </template>
+
+          </el-sub-menu>
         </el-sub-menu>
       </el-menu>
 
@@ -64,6 +72,7 @@
 
 <script>
 import {Flag, Plus, Refresh} from "@element-plus/icons-vue";
+import {queryWbtxl} from "@/http/api";
 
 export default {
   name: "txl_list",
@@ -77,6 +86,17 @@ export default {
     Refresh() {
       return Refresh
     }
+  },
+  data(){
+    return{
+      wbtx:[]
+    }
+  },
+  mounted() {
+    queryWbtxl().then((res)=>{
+      this.wbtx = res.data;
+      console.log(this.wbtx)
+    })
   }
 }
 </script>

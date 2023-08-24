@@ -33,7 +33,6 @@ const routes = [
                 path: '/attendceatt',
                 name: 'attendceatt',
                 component: () => import('../views/kqgl/kq_list.vue'),
-
             },
             {
                 path: '/newaddliucheng',
