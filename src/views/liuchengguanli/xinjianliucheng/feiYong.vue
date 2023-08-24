@@ -12,9 +12,9 @@
         <el-input v-model="name" style="width: 450px"/>
       </el-form-item>
       <el-form-item label="审核人员">
-        <el-input v-model="name" style="width: 450px" placeholder="请选择自己的上级">
+        <el-input v-model="shName" style="width: 450px" placeholder="请选择自己的上级">
           <template  #append>
-            <el-button style="background-color: #42b983;color: white" @click="dialogVisible = true"><el-icon><Plus /></el-icon>通讯录</el-button>
+            <el-button style="background-color: #42b983;color: white" @click="dialogVisible2 = true"><el-icon><Plus /></el-icon>通讯录</el-button>
           </template>
         </el-input>
       </el-form-item>
@@ -28,7 +28,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="证明人">
-        <el-input v-model="name" style="width: 450px">
+        <el-input v-model="zmName" style="width: 450px">
           <template  #append>
             <el-button style="background-color: #42b983;color: white" @click="dialogVisible = true"><el-icon><Plus /></el-icon>通讯录</el-button>
           </template>
@@ -71,7 +71,6 @@
   >
  <el-table-column type="selection" width="55" label="选择"/>
       <el-input  v-model="input" type="text"/>
-      hhhhhh
     <el-table-column label="费用科目" width="220">
       <el-input v-model="input"/>
     </el-table-column>
@@ -90,29 +89,8 @@
     <el-button type="primary" @click="onSubmit">确认</el-button>
     <el-button>取消</el-button>
   </el-form-item>
-  <el-dialog
-      v-model="dialogVisible"
-      width="40%"
-      :before-close="handleClose"
-  >
-      <el-input placeholder="查找..." v-model="queryMhAll" style="width:200px;margin-left: 10px">
-        <template #append>
-          <el-button color="white" :icon="Search" @click="this.fenye()" ></el-button>
-        </template>
-      </el-input>
-    <el-table :data="items" style="width: 100%"
-              @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" />
-      <el-table-column width="30px">
-        <img src="dasdsa">
-      </el-table-column>
-      <el-table-column prop="dept_name" label="部门"  />
-      <el-table-column prop="real_name" label="真实姓名" />
-      <el-table-column prop="user_name" label="用户名" />
-      <el-table-column prop="NAME" label="职位"/>
-      <el-table-column prop="user_tel" label="电话"  />
 
-    </el-table>
+<!-- 分页   -->
     <div class="demo-pagination-block">
       <el-pagination
           v-model:current-page="currentPage"
@@ -124,7 +102,6 @@
           @current-change="handleCurrentChange"
       />
     </div>
-  </el-dialog>
 </template>
 
 <script>
@@ -140,8 +117,8 @@ export default {
   components: {Plus},
   data:function(){
     return{
-      dialogVisible:false,
-      name:"",
+      zhName:"",
+      zmName:"",
       input:"",
       currentPage:'',
       total:'',
@@ -150,6 +127,9 @@ export default {
     }
   },
   methods:{
+    handleSelectionChange(val){
+      console.log(val)
+    },
     handleCurrentChange(val){
       this.currentPage = val;
       this.fenye();
