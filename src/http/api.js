@@ -38,10 +38,44 @@ export function queryUsersList(pageNo,queryMhAll){
 }
 //查询考勤管理
 export function queryKqgl(pageNo,sel){
-
     return request({
         url:"/aoaAttendsList/queryList?pageNo="+pageNo+"&&sel="+sel,
         method:"get",
     })
-
+}
+//查询出状态
+export function queryDeeplyList(){
+    return request({
+        url:"/aoaTypeList/queryDeeplyList",
+        method:"get",
+    })
+}
+//查询出所有支付方式
+export function queryIncomeTypeList(){
+    return request({
+        url:"/aoaTypeList/queryIncomeTypeList",
+        method:"get",
+    })
+}
+//查询所有科目
+export function queryIncomeTreeList(){
+    return request({
+        url:"/aoaSubject/queryTreeList",
+        method:"get",
+    })
+}
+//查询全部用户
+export function queryAllUser(){
+    return request({
+        url:"/aoaUser/queryAll",
+        method:"get",
+    })
+}
+//新建流程插入功能
+export function addBursement(data){
+    return request({
+        url:"/aoaBursement/add",
+        method:"post",
+        data
+    })
 }
