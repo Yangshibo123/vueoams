@@ -22,3 +22,10 @@ export function querytxlNb(pageNo){
         method:"get",
     })
 }
+/*所有员工查询*/
+export function queryUsersList(pageNo,queryMhAll){
+    return request({
+        url:"/aoaProcessList/queryList?pageNo="+pageNo+"&&all="+queryMhAll,
+        method:"get",
+    })
+}
