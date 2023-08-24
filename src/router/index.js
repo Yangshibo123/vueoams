@@ -20,17 +20,36 @@ const routes = [
                 path: '/addrmanage',
                 name: 'addrmanage',
                 component: () => import('../views/txl/list.vue'),
-                children:[{
-                    path:'/nbList',
-                    name:'nbList',
-                    component: () => import('../views/txl/txlChildren/nbList.vue')
-                }]
+                children:[
+                    {
+                        path:'/nbList',
+                        name:'nbList',
+                        component: () => import('../views/txl/txlChildren/nbList.vue')
+                    }
+                ]
             },
             //考勤管理
             {
                 path: '/attendceatt',
                 name: 'attendceatt',
                 component: () => import('../views/kqgl/kq_list.vue'),
+            },
+            {
+                path: '/newaddliucheng',
+                name: 'newaddliucheng',
+                component: () => import('../views/liuchengguanli/xinjianliucheng/newLiuCheng.vue'),
+
+            },
+            {
+                path: '/feiYong',
+                name: 'feiYong',
+                component: () => import('../views/liuchengguanli/xinjianliucheng/feiYong.vue'),
+
+            },
+            {
+                path: '/chuChai',
+                name: 'chuChai',
+                component: () => import('../views/liuchengguanli/xinjianliucheng/chuChai.vue'),
 
             },
         ]
