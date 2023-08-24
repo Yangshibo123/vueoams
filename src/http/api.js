@@ -36,3 +36,12 @@ export function queryUsersList(pageNo,queryMhAll){
         method:"get",
     })
 }
+//查询考勤管理
+export function queryKqgl(pageNo,sel){
+
+    return request({
+        url:"/aoaAttendsList/queryList?pageNo="+pageNo+"&&sel="+sel,
+        method:"get",
+    })
+
+}
