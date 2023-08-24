@@ -29,6 +29,14 @@ export function queryWbtxl(){
         method:"get",
     })
 }
+//加班申请：
+//通讯录查询人名
+export function queryTxl(){
+    return request({
+        url:"/aoaUser/queryAll",
+        method:"get",
+    })
+}
 /*所有员工查询*/
 export function queryUsersList(pageNo,queryMhAll){
     return request({

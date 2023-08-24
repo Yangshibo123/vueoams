@@ -21,7 +21,7 @@ const routes = [
                 name: 'addrmanage',
                 component: () => import('../views/txl/list.vue'),
                 children:[
-                    {
+                    {//内部通讯录页面
                         path:'/nbList',
                         name:'nbList',
                         component: () => import('../views/txl/txlChildren/nbList.vue')
@@ -51,6 +51,11 @@ const routes = [
                 name: 'chuChai',
                 component: () => import('../views/liuchengguanli/xinjianliucheng/chuChai.vue'),
 
+            },
+            {//加班申请页面
+                path: '/workOver',
+                name: 'workOver',
+                component: () => import('../views/liuchengguanli/xinjianliucheng/workOver.vue'),
             },
         ]
     },
