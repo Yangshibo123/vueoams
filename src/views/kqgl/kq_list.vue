@@ -13,13 +13,13 @@
 
 
   <div id="b" width="100%" style="border: 1px gray solid">
-    <el-button :icon="Refresh" style="background:lightgreen;color: white">刷新</el-button>
+    <el-button :icon="Refresh" style="background:lightgreen;color: white" @click="sX">刷新</el-button>
 
 
     <el-row>
-      <el-input placeholder="查找..." style="width: 300px;">
+      <el-input placeholder="查找..." v-model="sel" style="width: 300px;">
         <template #append>
-          <el-button color="gray" :icon="Search" ></el-button>
+          <el-button color="gray" :icon="Search" @click="mH"></el-button>
         </template>
       </el-input>
 
@@ -28,12 +28,12 @@
   </div>
   <div>
     <el-table :data="items" style="width: 100%">
-      <el-table-column prop="userName" label="用户名" width="180" />
-      <el-table-column prop="typeName" label="类型" width="180" />
-      <el-table-column prop="attendsTime" label="时间"  width="280" />
-      <el-table-column prop="attendsIp" label="ip" width="380" />
-      <el-table-column prop="attendsRemark" label="备注" width="180" />
-      <el-table-column prop="statusName" label="状态" />
+      <el-table-column prop="user_name" label="用户名" width="180" />
+      <el-table-column prop="type_name" label="类型" width="180" />
+      <el-table-column prop="attends_time" label="时间"  width="280" />
+      <el-table-column prop="attends_ip" label="ip" width="380" />
+      <el-table-column prop="attends_remark" label="备注" width="180" />
+      <el-table-column prop="status_name" label="状态" />
       <el-table-column prop="button" label="操作">
         <template #default="scope">
 
@@ -68,6 +68,7 @@
 <script>
 
 import {Delete, EditPen,Refresh, Search} from "@element-plus/icons-vue";
+import {queryKqgl} from "@/http/api";
 
 export default {
   name: "kq_list",
@@ -88,15 +89,30 @@ export default {
   },
   data(){
     return{
-items:[]
+items:[],
+      sel:'',
+      currentPage: '',
+      pages:'',
     }
   },
   mounted() {
-
+this.fenYe()
   },
   methods:{
-    fenYe(){
+    sX:function (){
+      location.reload();
+    },
 
+    mH:function (){
+
+      this.fenYe();
+    },
+
+    fenYe(){
+queryKqgl(this.currentPage,this.sel).then((res)=>{
+  this.items = res.data.records;
+  this.pages = res.data.total
+})
     },
     handleCurrentChange(val) {
       this.currentPage=val
