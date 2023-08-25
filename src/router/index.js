@@ -57,6 +57,11 @@ const routes = [
                 name: 'workOver',
                 component: () => import('../views/liuchengguanli/xinjianliucheng/workOver.vue'),
             },
+            {//我的申请
+                path: '/flowmange',
+                name: 'flowmange',
+                component: () => import('../views/liuchengguanli/myRequest/myRequest_index.vue'),
+            },
         ]
     },
 

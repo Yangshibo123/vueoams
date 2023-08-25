@@ -15,6 +15,7 @@ export function queryMenusById(userId){
         method:"get",
     })
 }
+//通讯录：
 /*通讯录-内部通讯录查询所有*/
 export function querytxlNb(pageNo){
     return request({
@@ -29,14 +30,37 @@ export function queryWbtxl(){
         method:"get",
     })
 }
+
 //加班申请：
-//通讯录查询人名
+/*通讯录查询人名*/
 export function queryTxl(){
     return request({
         url:"/aoaUser/queryAll",
         method:"get",
     })
 }
+//我的申请：
+/*添加费用报销*/
+export function queryMyList(userId,content,pageNo,pageSize){
+    return request({
+        url:"/aoaProcessList/queryMyList?userId="+userId+"&&content="+content+"&&pageNo="+pageNo+"&&pageSize="+pageSize,
+        method:"get",
+    })
+}
+//我的申请查询
+export function queryProcess(pageNo,pageSize,content,userId){
+    return request({
+        url:"/aoaProcessList/queryProcess",
+        method:"get",
+        params:{
+            pageNo:pageNo,
+            pageSize:pageSize,
+            content:content,
+            processUserId:userId
+        }
+    });
+}
+
 /*所有员工查询*/
 export function queryUsersList(pageNo,queryMhAll){
     return request({
