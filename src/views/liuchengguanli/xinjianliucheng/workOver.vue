@@ -70,7 +70,7 @@
       </tr>
     </table>
     <el-button @click="save()">保存</el-button>
-    <el-button @click="save()">取消</el-button>
+    <el-button @click="this.$router.push('newaddliucheng')">取消</el-button>
   </div>
 </template>
 
