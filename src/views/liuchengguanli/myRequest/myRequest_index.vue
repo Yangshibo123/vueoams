@@ -5,16 +5,16 @@
     <span >流程管理</span>
   </div>
   <el-table :data="items" empty-text="暂无数据" style="width: 100%">
-    <el-table-column prop="type_name" label="类型"  />
-    <el-table-column prop="process_name" label="标 题"  />
-    <el-table-column prop="apply_time" label="申请时间" />
-    <el-table-column prop="user_name" label="审核人"  />
-    <el-table-column prop="deeply_name" label="紧急程度"  />
+    <el-table-column prop="typeName" label="类型"  />
+    <el-table-column prop="processName" label="标 题"  />
+    <el-table-column prop="applyTime" label="申请时间" />
+    <el-table-column prop="userName" label="审核人"  />
+    <el-table-column prop="deeplyName" label="紧急程度"  />
     <el-table-column  label="状态">
       <template #default="scope">
         <div style="height: 25px;width: 50px;text-align: center;line-height: 25px;color: white"
-             :style="{ backgroundColor: setColumnColor(scope.row.status_id)}">
-            {{ scope.row.status_name }}
+             :style="{ backgroundColor: setColumnColor(scope.row.statusId)}">
+            {{ scope.row.statusName }}
         </div>
       </template>
     </el-table-column>
@@ -65,8 +65,8 @@ export default {
         this.total = res.data.total;
       })
     },
-    setColumnColor:function (status_id){
-        switch (status_id){
+    setColumnColor:function (statusId){
+        switch (statusId){
           case 23:
             return "#5BC0DE";
           case 24:
@@ -78,7 +78,7 @@ export default {
         }
     },
     directToShow:function (row){
-      switch (row.type_name){
+      switch (row.typeName){
         case "出差费用":
           this.$router.push("myRequestChuChaiF");
           localStorage.setItem("row",JSON.stringify(row));

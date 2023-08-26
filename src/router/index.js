@@ -58,8 +58,8 @@ const routes = [
                 component: () => import('../views/liuchengguanli/xinjianliucheng/workOver.vue'),
             },
             {//我的申请
-                path: '/flowmange',
-                name: 'flowmange',
+                path: '/flowmanage',
+                name: 'flowmanage',
                 component: () => import('../views/liuchengguanli/myRequest/myRequest_index.vue'),
             },
         ]
