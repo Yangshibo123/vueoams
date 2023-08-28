@@ -32,7 +32,6 @@
             <template v-for="wb in wbtx" :key="wb.id">
               <el-menu-item index="2-4-1">{{ wb.catelogName }}</el-menu-item>
             </template>
-
           </el-sub-menu>
         </el-sub-menu>
       </el-menu>

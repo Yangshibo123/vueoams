@@ -20,7 +20,7 @@
     </el-table-column>
     <el-table-column  label="操作" >
       <template #default="scope">
-        <el-button type="success"  @click="directToShow(scope.row)">查看</el-button>
+        <el-button type="success"  @click="this.$router.push({name:'myRequestDetail',query:{'processId':scope.row.processId}})">查看</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -76,23 +76,6 @@ export default {
           case 26:
             return "#D9534F";
         }
-    },
-    directToShow:function (row){
-      switch (row.typeName){
-        case "出差费用":
-          this.$router.push("myRequestChuChaiF");
-          localStorage.setItem("row",JSON.stringify(row));
-          break;
-        case "出差申请":
-          this.$router.push("myRequestChuChaiS");
-          localStorage.setItem("row",JSON.stringify(row));
-          break;
-        case "请假申请":
-          this.$router.push("myRequestQingJia");
-          localStorage.setItem("row",JSON.stringify(row));
-          break;
-      }
-
     },
     handleSizeChange:function(val){
       this.pageSize = val;

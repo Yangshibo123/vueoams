@@ -62,6 +62,11 @@ const routes = [
                 name: 'flowmanage',
                 component: () => import('../views/liuchengguanli/myRequest/myRequest_index.vue'),
             },
+            {//我的申请详情
+                path: '/myRequestDetail',
+                name: 'myRequestDetail',
+                component: () => import('../views/liuchengguanli/myRequest/myRequestDetail.vue'),
+            },
         ]
     },
 

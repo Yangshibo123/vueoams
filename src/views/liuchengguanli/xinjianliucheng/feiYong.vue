@@ -11,7 +11,7 @@
         <td>
           <el-select v-model="deeply" class="m-2" placeholder="选择程度" size="large">
             <el-option
-                v-for="item in deeply_ids"
+                v-for="item in deeplyIds"
                 :key="item.typeId"
                 :label="item.typeName"
                 :value="item.typeId"
@@ -45,7 +45,7 @@
         <td>
           <el-select v-model="typeId" class="m-2" placeholder="选择支付方式" size="large">
             <el-option
-                v-for="item in type_ids"
+                v-for="item in typeIds"
                 :key="item.typeId"
                 :label="item.typeName"
                 :value="item.typeId"
@@ -200,8 +200,8 @@ export default {
       shenheren:'',//审核人
       processDes:'',
       subjectId:'',
-      type_ids: '',
-      deeply_ids: '',
+      typeIds: '',
+      deeplyIds: '',
       subjectList:'',
       reData:[]
     }
@@ -232,10 +232,10 @@ export default {
     },
     initData:function (){
       queryDeeplyList().then((res)=>{
-        this.deeply_ids = res.data;
+        this.deeplyIds = res.data;
       });
       queryIncomeTypeList().then((res)=>{
-        this.type_ids = res.data;
+        this.typeIds = res.data;
       });
       queryIncomeTreeList().then((res)=>{
         this.subjectList = res.data;

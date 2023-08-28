@@ -39,6 +39,15 @@ export function queryTxl(){
         method:"get",
     })
 }
+/*查询加班类型*/
+export function queryJblx(){
+    return request({
+        url:"/aoaTypeList/queryJblx",
+        method:"get",
+    })
+}
+
+
 //我的申请：
 /*添加费用报销*/
 export function queryMyList(userId,content,pageNo,pageSize){
@@ -75,7 +84,7 @@ export function queryKqgl(pageNo,sel){
         method:"get",
     })
 }
-//查询出状态
+//查询出紧急程度
 export function queryDeeplyList(){
     return request({
         url:"/aoaTypeList/queryDeeplyList",
@@ -109,5 +118,12 @@ export function addBursement(data){
         url:"/aoaBursement/add",
         method:"post",
         data
+    })
+}
+/*我的申请详情页*/
+export function queryMyBursementDetail(processId){
+    return request({
+        url:"/aoaProcessList/queryMyBursementDetail?processId="+processId,
+        method:"get",
     })
 }
